@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Угадай число</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Угадай число от 1 до 100</h1>
+  <input id="guess-input" type="number" min="1" max="100">
+  <button id="guess-button">Угадать</button>
+  <div id="result"></div>
+
+  <script>
+    let numberToGuess = Math.floor(Math.random() * 100) + 1;
+
+    document.getElementById('guess-button').addEventListener('click', () => {
+      let playerGuess = document.getElementById('guess-input').value;
+      let result = document.getElementById('result');
+
+      if (playerGuess < numberToGuess) {
+        result.innerHTML = 'Загаданное число больше!';
+        result.style.color = 'red';
+      } else if (playerGuess > numberToGuess) {
+        result.innerHTML = 'Загаданное число меньше!';
+        result.style.color = 'red';
+      } else {
+        result.innerHTML = 'Поздравляю, вы угадали число!';
+        result.style.color = 'green';
+      }
+    });
+  </script>
+</body>
+
+</html>

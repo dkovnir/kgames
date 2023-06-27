@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои игры</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #51dada;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .game-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .game-list-item {
+      width: 200px;
+      height: 200px;
+      background-color: #d38f57;
+      border-radius: 10px;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
+      text-align: center;
+    }
+
+    .game-list-item:hover {
+      box-shadow: 0 4px 8px rgba(150, 125, 125, 0.1);
+    }
+
+    .game-list-item a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .search-bar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      padding: 8px;
+      width: 300px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Мои игры</h1>
+  <div class="search-bar">
+    <input type="text" class="search-input" placeholder="Введите название игры">
+  </div>
+  <ul class="game-list">
+    <li class="game-list-item" href="cross.html">
+      <a href="newcross.html">Крестики-Нолики</a>
+    </li>
+    <li class="game-list-item">
+      <a href="guess.html">Угадай число</a>
+    </li>
+    <li class="game-list-item">
+      <a href="shipdefence.html">Космическая защита<br><sub text="center">(в разработке)</sub></a>
+    </li>
+  </ul>
+
+  <script>
+    let searchInput = document.querySelector('.search-input');
+    let gameItems = document.querySelectorAll('.game-list-item');
+
+    searchInput.addEventListener('input', function (event) {
+      let wordToSearch = event.target.value.toLowerCase();
+
+      gameItems.forEach(function (item) {
+        let gameName = item.querySelector('a').textContent.toLowerCase();
+
+        if (gameName.includes(wordToSearch)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
